@@ -5,6 +5,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import EmailIcon from '@mui/icons-material/Email';
 import { motion } from 'framer-motion';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const FooterContainer = styled(Box)(({ theme }) => ({
   background: 'rgba(17, 34, 64, 0.95)',
@@ -41,6 +42,36 @@ const SocialButton = ({ icon, href, label }) => (
     </IconButton>
   </motion.div>
 );
+
+const StyledFooter = styled(Box)(({ theme }) => ({
+  background: 'rgba(17, 34, 64, 0.6)',
+  backdropFilter: 'blur(10px)',
+  padding: theme.spacing(3, 0),
+  position: 'relative',
+  borderTop: '1px solid rgba(100, 255, 218, 0.1)',
+}));
+
+const FooterText = styled(Typography)(({ theme }) => ({
+  color: '#8892b0',
+  textAlign: 'center',
+  fontSize: '0.9rem',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: theme.spacing(1),
+  '& .MuiSvgIcon-root': {
+    color: '#64ffda',
+    fontSize: '1.1rem',
+    transition: 'transform 0.3s ease',
+    '&:hover': {
+      transform: 'scale(1.2)',
+    },
+  },
+  '& span': {
+    color: '#64ffda',
+    fontWeight: 500,
+  },
+}));
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -118,6 +149,13 @@ const Footer = () => {
           </Box>
         </Box>
       </Container>
+      <StyledFooter>
+        <Container>
+          <FooterText>
+            Made with <FavoriteIcon /> by <span>Anlil</span>
+          </FooterText>
+        </Container>
+      </StyledFooter>
     </FooterContainer>
   );
 };

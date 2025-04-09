@@ -3,6 +3,7 @@ import { ThemeProvider, createTheme } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
+import GetStarted from './components/GetStarted';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -107,6 +108,7 @@ function App() {
       <div style={{ position: "relative", zIndex: 1 }}>
         <Navbar />
         <Home />
+        <GetStarted />
         <About />
         <Contact />
         <Footer />

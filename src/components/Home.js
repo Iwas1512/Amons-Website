@@ -2,6 +2,9 @@ import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { motion } from 'framer-motion';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PublicIcon from '@mui/icons-material/Public';
+import VerifiedIcon from '@mui/icons-material/Verified';
 
 const StyledBox = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -10,7 +13,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   position: 'relative',
-  padding: theme.spacing(4),
+  padding: theme.spacing(8, 0),
 }));
 
 const ImageContainer = styled(motion.div)({
@@ -57,7 +60,89 @@ const GradientText = styled(motion.span)({
   display: 'inline-block',
 });
 
+const InfoTimeline = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: theme.spacing(6),
+  marginTop: theme.spacing(8),
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: '50%',
+    width: '2px',
+    background: 'rgba(100, 255, 218, 0.2)',
+    transform: 'translateX(-50%)',
+  },
+}));
+
+const InfoItem = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  textAlign: 'center',
+  position: 'relative',
+  width: '100%',
+  maxWidth: '600px',
+  zIndex: 1,
+}));
+
+const IconWrapper = styled(Box)(({ theme }) => ({
+  background: '#0a192f',
+  border: '2px solid #64ffda',
+  borderRadius: '50%',
+  width: '60px',
+  height: '60px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginBottom: theme.spacing(2),
+  '& .MuiSvgIcon-root': {
+    color: '#64ffda',
+    fontSize: '2rem',
+  },
+}));
+
+const MainText = styled(Typography)(({ theme }) => ({
+  fontSize: '2.5rem',
+  fontWeight: 'bold',
+  color: '#fff',
+  marginBottom: theme.spacing(1),
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '2rem',
+  },
+}));
+
+const SubText = styled(Typography)(({ theme }) => ({
+  fontSize: '1.5rem',
+  color: '#8892b0',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1.2rem',
+  },
+}));
+
 const Home = () => {
+  const infoItems = [
+    {
+      icon: <LocationOnIcon />,
+      mainText: 'BASED IN AUSTIN,',
+      subText: 'TEXAS',
+    },
+    {
+      icon: <PublicIcon />,
+      mainText: 'HAS HELPED MANY',
+      subText: 'WORLDWIDE',
+    },
+    {
+      icon: <VerifiedIcon />,
+      mainText: 'DIGITAL ARCHITECT',
+      subText: '+ HEALTH & WEALTH',
+    },
+  ];
+
   return (
     <StyledBox id="home">
       <Container maxWidth="lg">
@@ -130,6 +215,35 @@ const Home = () => {
             </Typography>
           </motion.div>
         </ContentBox>
+
+        <InfoTimeline>
+          {infoItems.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              style={{ width: '100%' }}
+            >
+              <InfoItem>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <IconWrapper>
+                    {item.icon}
+                  </IconWrapper>
+                </motion.div>
+                <MainText>
+                  {item.mainText}
+                </MainText>
+                <SubText>
+                  {item.subText}
+                </SubText>
+              </InfoItem>
+            </motion.div>
+          ))}
+        </InfoTimeline>
       </Container>
     </StyledBox>
   );

@@ -24,7 +24,7 @@ const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const menuItems = ['Home', 'About', 'Contact'];
+  const menuItems = ['Home', 'Get Started', 'About', 'Contact'];
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -60,7 +60,7 @@ const Navbar = () => {
       {menuItems.map((item) => (
         <ListItem button key={item} onClick={handleDrawerToggle}>
           <Link
-            to={item.toLowerCase()}
+            to={item.toLowerCase().replace(' ', '-')}
             spy={true}
             smooth={true}
             offset={-70}
@@ -145,7 +145,7 @@ const Navbar = () => {
                   }}
                 >
                   <Link
-                    to={item.toLowerCase()}
+                    to={item.toLowerCase().replace(' ', '-')}
                     spy={true}
                     smooth={true}
                     offset={-70}
