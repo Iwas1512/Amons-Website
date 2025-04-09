@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 import { useCallback } from "react";
 import { Particles } from "react-tsparticles";
 import { Engine } from "tsparticles-engine";
@@ -108,6 +109,7 @@ function App() {
         <Home />
         <About />
         <Contact />
+        <Footer />
       </div>
     </ThemeProvider>
   );
