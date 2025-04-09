@@ -11,7 +11,7 @@ const FooterContainer = styled(Box)(({ theme }) => ({
   background: 'rgba(17, 34, 64, 0.95)',
   backdropFilter: 'blur(8px)',
   color: '#8892b0',
-  padding: theme.spacing(6, 0, 4),
+  padding: theme.spacing(4, 0),
   position: 'relative',
   zIndex: 1,
 }));
@@ -31,6 +31,7 @@ const SocialButton = ({ icon, href, label }) => (
       aria-label={label}
       sx={{
         margin: '0 8px',
+        color: '#64ffda',
         transition: 'all 0.3s ease',
         '&:hover': {
           color: '#64ffda',
@@ -43,31 +44,12 @@ const SocialButton = ({ icon, href, label }) => (
   </motion.div>
 );
 
-const StyledFooter = styled(Box)(({ theme }) => ({
-  background: 'rgba(17, 34, 64, 0.6)',
-  backdropFilter: 'blur(10px)',
-  padding: theme.spacing(3, 0),
-  position: 'relative',
-  borderTop: '1px solid rgba(100, 255, 218, 0.1)',
-}));
-
 const FooterText = styled(Typography)(({ theme }) => ({
   color: '#8892b0',
   textAlign: 'center',
   fontSize: '0.9rem',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  gap: theme.spacing(1),
-  '& .MuiSvgIcon-root': {
-    color: '#64ffda',
-    fontSize: '1.1rem',
-    transition: 'transform 0.3s ease',
-    '&:hover': {
-      transform: 'scale(1.2)',
-    },
-  },
-  '& span': {
+  marginTop: theme.spacing(2),
+  '& .accent': {
     color: '#64ffda',
     fontWeight: 500,
   },
@@ -84,7 +66,7 @@ const Footer = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: 3,
+            gap: 2,
           }}
         >
           <Box>
@@ -114,48 +96,15 @@ const Footer = () => {
           />
 
           <Box sx={{ textAlign: 'center' }}>
-            <Typography
-              variant="body2"
-              sx={{
-                color: '#8892b0',
-                '& a': {
-                  color: '#64ffda',
-                  textDecoration: 'none',
-                  transition: 'color 0.3s ease',
-                  '&:hover': {
-                    color: '#fff',
-                  },
-                },
-              }}
-            >
-              Designed & Built by{' '}
-              <a
-                href="https://github.com/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Avatar of Success
-              </a>
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{
-                color: '#8892b0',
-                marginTop: 1,
-              }}
-            >
+            <FooterText>
+              Designed and built with <FavoriteIcon sx={{ color: '#64ffda', fontSize: '1rem', verticalAlign: 'middle' }} /> by <span className="accent">Anlil</span>
+            </FooterText>
+            <FooterText>
               © {currentYear} All rights reserved.
-            </Typography>
+            </FooterText>
           </Box>
         </Box>
       </Container>
-      <StyledFooter>
-        <Container>
-          <FooterText>
-            Made with <FavoriteIcon /> by <span>Anlil</span>
-          </FooterText>
-        </Container>
-      </StyledFooter>
     </FooterContainer>
   );
 };

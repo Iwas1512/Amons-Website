@@ -11,9 +11,17 @@ const StyledBox = styled(Box)(({ theme }) => ({
   background: 'transparent',
   color: '#fff',
   display: 'flex',
+  flexDirection: 'column',
   alignItems: 'center',
   position: 'relative',
-  padding: theme.spacing(8, 0),
+  padding: theme.spacing(4, 0),
+}));
+
+const MainContainer = styled(Container)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  width: '100%',
 }));
 
 const ImageContainer = styled(motion.div)({
@@ -43,7 +51,7 @@ const ImageContainer = styled(motion.div)({
 const ContentBox = styled(motion.div)({
   width: '100%',
   maxWidth: '900px',
-  margin: '0 auto',
+  margin: '0 auto 6rem',
   textAlign: 'center',
   padding: '3rem',
   background: 'rgba(0, 0, 0, 0.2)',
@@ -64,14 +72,17 @@ const InfoTimeline = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  gap: theme.spacing(6),
-  marginTop: theme.spacing(8),
+  gap: theme.spacing(8),
+  width: '100%',
+  maxWidth: '800px',
+  margin: '0 auto',
   position: 'relative',
+  padding: theme.spacing(4, 0),
   '&::before': {
     content: '""',
     position: 'absolute',
-    top: 0,
-    bottom: 0,
+    top: '10%',
+    bottom: '10%',
     left: '50%',
     width: '2px',
     background: 'rgba(100, 255, 218, 0.2)',
@@ -94,15 +105,28 @@ const IconWrapper = styled(Box)(({ theme }) => ({
   background: '#0a192f',
   border: '2px solid #64ffda',
   borderRadius: '50%',
-  width: '60px',
-  height: '60px',
+  width: '80px',
+  height: '80px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  marginBottom: theme.spacing(2),
+  marginBottom: theme.spacing(3),
+  position: 'relative',
+  zIndex: 2,
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: -4,
+    left: -4,
+    right: -4,
+    bottom: -4,
+    borderRadius: '50%',
+    background: 'rgba(100, 255, 218, 0.1)',
+    zIndex: -1,
+  },
   '& .MuiSvgIcon-root': {
     color: '#64ffda',
-    fontSize: '2rem',
+    fontSize: '2.5rem',
   },
 }));
 
@@ -111,6 +135,7 @@ const MainText = styled(Typography)(({ theme }) => ({
   fontWeight: 'bold',
   color: '#fff',
   marginBottom: theme.spacing(1),
+  textAlign: 'center',
   [theme.breakpoints.down('sm')]: {
     fontSize: '2rem',
   },
@@ -119,6 +144,7 @@ const MainText = styled(Typography)(({ theme }) => ({
 const SubText = styled(Typography)(({ theme }) => ({
   fontSize: '1.5rem',
   color: '#8892b0',
+  textAlign: 'center',
   [theme.breakpoints.down('sm')]: {
     fontSize: '1.2rem',
   },
@@ -145,7 +171,7 @@ const Home = () => {
 
   return (
     <StyledBox id="home">
-      <Container maxWidth="lg">
+      <MainContainer maxWidth="lg">
         <ImageContainer
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -172,7 +198,7 @@ const Home = () => {
             </Typography>
           </Box>
         </ImageContainer>
-  
+
         <ContentBox
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -189,7 +215,7 @@ const Home = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 1.2 }}
               >
-                Avatar of Success
+                Amon's Draft Website
               </GradientText>
             </Typography>
           </motion.div>
@@ -222,8 +248,8 @@ const Home = () => {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              style={{ width: '100%' }}
+              transition={{ duration: 0.5, delay: index * 0.3 }}
+              style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
             >
               <InfoItem>
                 <motion.div
@@ -244,7 +270,7 @@ const Home = () => {
             </motion.div>
           ))}
         </InfoTimeline>
-      </Container>
+      </MainContainer>
     </StyledBox>
   );
 };
