@@ -11,15 +11,18 @@ const StyledBox = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   position: 'relative',
-  padding: theme.spacing(8, 0),
+  padding: theme.spacing(4, 0),
 }));
 
 const GlassCard = styled(Paper)(({ theme }) => ({
   background: 'rgba(17, 34, 64, 0.7)',
   backdropFilter: 'blur(10px)',
-  borderRadius: '20px',
-  padding: theme.spacing(4),
-  height: '500px',
+  borderRadius: '16px',
+  padding: theme.spacing(3),
+  height: '300px',
+  width: '100%',
+  maxWidth: '350px',
+  margin: '0 auto',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -36,13 +39,13 @@ const GlassCard = styled(Paper)(({ theme }) => ({
     left: -100,
     width: '100%',
     height: '100%',
-    background: 'linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent)',
+    background: 'linear-gradient(90deg, transparent, rgba(41, 82, 196, 0.1), transparent)',
     transition: 'all 0.5s ease',
     transform: 'skewX(-15deg)',
   },
   '&:hover': {
-    transform: 'translateY(-10px)',
-    boxShadow: '0 15px 45px 0 rgba(100, 255, 218, 0.2)',
+    transform: 'translateY(-3px)',
+    boxShadow: '0 15px 45px 0 rgba(41, 82, 196, 0.25)',
     '&:before': {
       left: '100%',
     },
@@ -55,7 +58,7 @@ const MainHeading = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing(2),
   textAlign: 'center',
   color: '#fff',
-  textShadow: '0 0 20px rgba(100, 255, 218, 0.3)',
+  textShadow: '0 0 20px rgba(41, 82, 196, 0.3)',
   [theme.breakpoints.down('sm')]: {
     fontSize: '2.5rem',
   },
@@ -77,11 +80,11 @@ const CardButton = styled(Button)(({ theme }) => ({
   textTransform: 'none',
   marginTop: theme.spacing(2),
   background: 'transparent',
-  border: '2px solid #64ffda',
-  color: '#64ffda',
+  border: '2px solid #4a90e2',
+  color: '#4a90e2',
   transition: 'all 0.3s ease',
   '&:hover': {
-    background: 'rgba(100, 255, 218, 0.1)',
+    background: 'rgba(74, 144, 226, 0.1)',
     transform: 'scale(1.05)',
     '& .MuiSvgIcon-root': {
       transform: 'translateX(5px)',
@@ -104,21 +107,21 @@ const StyledButton = styled(Button)(({ theme }) => ({
     transform: 'scale(1.05)',
   },
   '&.primary': {
-    background: 'linear-gradient(45deg, #64ffda 30%, #00bcd4 90%)',
-    color: '#0a192f',
+    background: 'linear-gradient(45deg, #4a90e2 30%, #2952c4 90%)',
+    color: '#fff',
     fontWeight: 'bold',
-    boxShadow: '0 3px 5px 2px rgba(0, 188, 212, .3)',
+    boxShadow: '0 3px 5px 2px rgba(41, 82, 196, 0.3)',
     '&:hover': {
-      background: 'linear-gradient(45deg, #00bcd4 30%, #64ffda 90%)',
+      background: 'linear-gradient(45deg, #2952c4 30%, #4a90e2 90%)',
       transform: 'scale(1.05)',
     },
   },
   '&.secondary': {
     background: 'transparent',
-    border: '2px solid #64ffda',
-    color: '#64ffda',
+    border: '2px solid #4a90e2',
+    color: '#4a90e2',
     '&:hover': {
-      background: 'rgba(100, 255, 218, 0.1)',
+      background: 'rgba(74, 144, 226, 0.1)',
       transform: 'scale(1.05)',
     },
   },
@@ -161,9 +164,28 @@ const GetStarted = () => {
             Until you make the unconscious conscious, it will direct your life and you will call it fate
           </SubHeading>
 
-          <Grid container spacing={4} sx={{ marginBottom: 6 }}>
+          <Grid 
+            container 
+            spacing={3} 
+            sx={{ 
+              marginBottom: 6,
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: 3,
+              '& .MuiGrid-item': {
+                width: '100%',
+                maxWidth: { xs: '320px', md: '350px' },
+                padding: { xs: 1, md: 2 },
+              }
+            }}
+          >
             {showcaseItems.map((item, index) => (
-              <Grid item xs={12} md={4} key={index}>
+              <Grid 
+                item 
+                key={index}
+              >
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -174,10 +196,10 @@ const GetStarted = () => {
                     <Box
                       sx={{
                         width: '100%',
-                        height: '250px',
-                        borderRadius: '16px',
+                        height: { xs: '120px', md: '150px' },
+                        borderRadius: '12px',
                         overflow: 'hidden',
-                        marginBottom: 3,
+                        marginBottom: 2,
                         background: 'linear-gradient(45deg, #1a2940, #233554)',
                         display: 'flex',
                         alignItems: 'center',
@@ -193,10 +215,11 @@ const GetStarted = () => {
                         <Typography 
                           variant="body2" 
                           sx={{
-                            color: 'rgba(100, 255, 218, 0.7)',
+                            color: 'rgba(74, 144, 226, 0.7)',
                             textTransform: 'uppercase',
                             letterSpacing: '2px',
                             fontWeight: 'bold',
+                            fontSize: { xs: '0.9rem', md: '1rem' }
                           }}
                         >
                           {item.title}
@@ -204,23 +227,26 @@ const GetStarted = () => {
                       </motion.div>
                     </Box>
                     <Typography 
-                      variant="h5" 
+                      variant="h6"
                       sx={{ 
-                        color: '#64ffda', 
-                        mb: 2,
+                        color: '#4a90e2', 
+                        mb: 1,
                         fontWeight: 'bold',
                         textAlign: 'center',
+                        fontSize: { xs: '1.1rem', md: '1.25rem' }
                       }}
                     >
                       {item.title}
                     </Typography>
                     <Typography 
+                      variant="body2"
                       sx={{ 
                         color: '#8892b0', 
                         textAlign: 'center',
-                        mb: 3,
-                        px: 2,
-                        flex: 1,
+                        mb: 2,
+                        px: 1,
+                        fontSize: { xs: '0.85rem', md: '0.9rem' },
+                        minHeight: { xs: '60px', md: '80px' }
                       }}
                     >
                       {item.description}

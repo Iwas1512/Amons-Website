@@ -8,9 +8,8 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { useCallback } from "react";
-import { Particles } from "react-tsparticles";
-import { Engine } from "tsparticles-engine";
-import { loadSlim } from "tsparticles-slim";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 
 const theme = createTheme({
   palette: {
@@ -19,7 +18,7 @@ const theme = createTheme({
       main: '#64ffda',
     },
     background: {
-      default: '#0a192f',
+      default: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)',
       paper: '#112240',
     },
   },
@@ -30,71 +29,94 @@ const theme = createTheme({
 
 function App() {
   const particlesInit = useCallback(async (engine) => {
-    await loadSlim(engine);
+    await loadFull(engine);
   }, []);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)',
+        zIndex: -2
+      }} />
       <Particles
         id="tsparticles"
         init={particlesInit}
         options={{
-          fpsLimit: 120,
+          background: {
+            color: "transparent"
+          },
+          particles: {
+            number: {
+              value: 50,
+              density: {
+                enable: true,
+                value_area: 800
+              }
+            },
+            color: {
+              value: "#4a90e2"
+            },
+            shape: {
+              type: "circle"
+            },
+            opacity: {
+              value: 0.8,
+              random: false
+            },
+            size: {
+              value: 3
+            },
+            links: {
+              enable: true,
+              distance: 150,
+              color: "#4a90e2",
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.5,
+              direction: "none",
+              random: false,
+              straight: false,
+              outModes: {
+                default: "bounce"
+              }
+            }
+          },
           interactivity: {
+            detectsOn: "window",
             events: {
               onHover: {
                 enable: true,
-                mode: "repulse",
+                mode: "repulse"
               },
-              resize: true,
+              onClick: {
+                enable: true,
+                mode: "push"
+              },
+              resize: true
             },
             modes: {
               repulse: {
-                distance: 100,
+                distance: 150,
                 duration: 0.4,
+                speed: 1,
+                factor: 5,
+                easing: "ease-out-quad"
               },
-            },
+              push: {
+                quantity: 4
+              }
+            }
           },
-          particles: {
-            color: {
-              value: "#64ffda",
-            },
-            links: {
-              color: "#64ffda",
-              distance: 150,
-              enable: true,
-              opacity: 0.3,
-              width: 1,
-            },
-            move: {
-              direction: "none",
-              enable: true,
-              outModes: {
-                default: "bounce",
-              },
-              random: false,
-              speed: 1,
-              straight: false,
-            },
-            number: {
-              density: {
-                enable: true,
-                area: 800,
-              },
-              value: 80,
-            },
-            opacity: {
-              value: 0.5,
-            },
-            shape: {
-              type: "circle",
-            },
-            size: {
-              value: { min: 1, max: 3 },
-            },
-          },
-          detectRetina: true,
+          retina_detect: true
         }}
         style={{
           position: "fixed",
@@ -103,9 +125,14 @@ function App() {
           width: "100%",
           height: "100%",
           zIndex: 0,
+          pointerEvents: "auto"
         }}
       />
-      <div style={{ position: "relative", zIndex: 1 }}>
+      <div style={{ 
+        position: "relative", 
+        zIndex: 1,
+        minHeight: '100vh'
+      }}>
         <Navbar />
         <Home />
         <GetStarted />
