@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/Amons-Website/static/css/main.3059bddb.css",
-    "main.js": "/Amons-Website/static/js/main.347bf855.js",
+    "main.js": "/Amons-Website/static/js/main.0220c5c9.js",
     "static/js/453.6107e2e4.chunk.js": "/Amons-Website/static/js/453.6107e2e4.chunk.js",
+    "static/media/jcole.jpg": "/Amons-Website/static/media/jcole.2cef23e0d92ef19afbbf.jpg",
     "index.html": "/Amons-Website/index.html",
     "main.3059bddb.css.map": "/Amons-Website/static/css/main.3059bddb.css.map",
-    "main.347bf855.js.map": "/Amons-Website/static/js/main.347bf855.js.map",
+    "main.0220c5c9.js.map": "/Amons-Website/static/js/main.0220c5c9.js.map",
     "453.6107e2e4.chunk.js.map": "/Amons-Website/static/js/453.6107e2e4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3059bddb.css",
-    "static/js/main.347bf855.js"
+    "static/js/main.0220c5c9.js"
   ]
 }
